@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  View
+  View, Text, TouchableOpacity
 } from 'react-native';
 import Autocomplete from 'react-native-autocomplete-input';
 
@@ -9,7 +9,8 @@ class AutocompleteComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      data: [],
+      selectedItem: '',
     };
   }
 
@@ -17,8 +18,11 @@ class AutocompleteComponent extends Component {
   Request autocomplete options
    */
   queryTextHasBeenChanged(text) {
+    console.log(text);
     fetch('http://0.0.0.0:5005/rest/auto/' + text)
       .then(function(response) {
+        console.log("Autocomple Response:");
+        console.log(response);
         return response.json();
       })
       .then(function(myJson) {
@@ -30,9 +34,20 @@ class AutocompleteComponent extends Component {
 
   render() {
     return (<Autocomplete
-      style={{height: 40, width: 300}}
-      data={this.state.data}
-      onChangeText={text => this.queryTextHasBeenChanged(text)}
+            style={{height: 40, width: 300}}
+            renderSeparator={_ => <View
+              style={{height: 1, backgroundColor: '#9E9E9E'}}
+            />}
+            renderItem={text => (
+              <View
+                style={{padding: 4}}>
+                <TouchableOpacity onPress={() => this.setState({selectedItem: text})}>
+                  <Text>{text}</Text>
+                </TouchableOpacity>
+              </View>)
+            }
+            data={this.state.data}
+            onChangeText={text => this.queryTextHasBeenChanged(text)}
        />);
   }
 }
