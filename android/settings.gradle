@@ -1,0 +1,3 @@
+rootProject.name = 'GraphBuilder'
+
+include ':app'
