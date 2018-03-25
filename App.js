@@ -13,14 +13,13 @@ import {
 } from 'react-native';
 
 import AutocompleteComponent from './src/components/AutocompleteComponent';
+import ChartComponent from './src/components/ChartComponent';
 
 
 export default class App extends Component<Props> {
   render() {
     return (
-      <View style={styles.container}>
-        <AutocompleteComponent style={{padding: 30}}/>
-      </View>
+        <ChartComponent style={{height: 300, width: 300}}/>
     );
   }
 }
