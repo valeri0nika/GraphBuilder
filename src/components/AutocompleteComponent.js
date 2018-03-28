@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  View, Text, TouchableOpacity
+  View, Text, TouchableOpacity, StyleSheet
 } from 'react-native';
 import Autocomplete from 'react-native-autocomplete-input';
 
@@ -19,6 +19,7 @@ class AutocompleteComponent extends Component {
    */
   queryTextHasBeenChanged(text) {
     console.log(text);
+    console.log('http://0.0.0.0:5005/rest/auto/' + text);
     fetch('http://0.0.0.0:5005/rest/auto/' + text)
       .then(function(response) {
         console.log("Autocomple Response:");
@@ -34,6 +35,7 @@ class AutocompleteComponent extends Component {
 
   render() {
     return (<Autocomplete
+            inputContainerStyle={{paddingLeft: 4, paddingRight: 4}}
             style={{height: 40, width: 300}}
             renderSeparator={_ => <View
               style={{height: 1, backgroundColor: '#9E9E9E'}}

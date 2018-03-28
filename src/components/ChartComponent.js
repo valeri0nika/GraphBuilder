@@ -87,7 +87,9 @@ class ChartComponent extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5FCFF'
+    backgroundColor: '#F5FCFF',
+    height: 100,
+    padding: 20,
   },
   chart: {
     flex: 1
