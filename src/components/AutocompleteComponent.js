@@ -28,9 +28,7 @@ class AutocompleteComponent extends Component {
         return response.json();
       })
       .then(function(myJson) {
-        const dataArray = myJson.map(x => x.term);
-        this.setState({data: dataArray});
-        console.log(dataArray);
+        this.setState({data: myJson});
       }.bind(this));
   }
 
@@ -42,11 +40,14 @@ class AutocompleteComponent extends Component {
           renderSeparator={_ => <View
             style={{height: 1, backgroundColor: '#9E9E9E'}}
           />}
-          renderItem={text => (
+          renderItem={obj => (
             <View
               style={{padding: 4}}>
-              <TouchableOpacity onPress={() => this.setState({selectedItem: text, inputValue: text, data: []})}>
-                <Text>{text}</Text>
+              <TouchableOpacity onPress={() => {
+                this.setState({selectedItem: obj.term, inputValue: obj.term, data: []});
+                this.props.callback(obj);
+              }}>
+                <Text>{obj.term}</Text>
               </TouchableOpacity>
             </View>)
           }

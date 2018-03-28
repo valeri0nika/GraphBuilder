@@ -6,12 +6,9 @@
 
 import React, { Component } from 'react';
 import {
-  Platform,
   StyleSheet,
   Text,
   View,
-  Button,
-  TouchableOpacity
 } from 'react-native';
 
 import AutocompleteComponent from './src/components/AutocompleteComponent';
@@ -23,7 +20,11 @@ export default class App extends Component<Props> {
     return (
         <View style={{flex: 1}}>
           <View style={{height: 50}} />
-          <AutocompleteComponent />
+          <AutocompleteComponent
+            callback={text => {
+              console.log('Callback: ', text);
+            }}
+           />
         </View>
     );
   }
