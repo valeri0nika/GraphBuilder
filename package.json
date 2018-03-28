@@ -13,10 +13,18 @@
     "react-native-charts-wrapper": "^0.4.2"
   },
   "devDependencies": {
-    "babel-jest": "23.0.0-alpha.0",
+    "babel-jest": "~22.4.1",
     "babel-preset-react-native": "4.0.0",
     "jest": "22.4.2",
-    "react-test-renderer": "^16.3.0-alpha.1"
+    "react-test-renderer": "^16.3.0-alpha.1",
+    "babel-core": "~7.0.0-bridge.0",
+    "babel-eslint": "8.2.2",
+    "babel-loader": "~8.0.0-beta.2",
+    "babel-plugin-dynamic-import-node": "~1.2.0",
+    "babel-plugin-lodash": "~3.3.0",
+    "babel-plugin-transform-react-remove-prop-types": "~0.4.13",
+    "babel-plugin-universal-import": "~1.4.0",
+    "babel-plugin-use-lodash-es": "~0.2.0"
   },
   "jest": {
     "preset": "react-native"

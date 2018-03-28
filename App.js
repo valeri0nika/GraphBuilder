@@ -22,21 +22,8 @@ export default class App extends Component<Props> {
   render() {
     return (
         <View style={{flex: 1}}>
-          <View style={{height: 50, backgroundColor: '#DDD'}} />
-          <View style={{
-            justifyContent: 'space-between',
-            flexDirection: 'row'}}>
-              <View style={{paddingLeft: 12, width: 280}}>
-                <AutocompleteComponent />
-              </View>
-              <TouchableOpacity
-                  style={styles.searchScreenButton}
-                   onPress={this.searchData}
-                   underlayColor='#fff'>
-                   <Text style={styles.submitText}>  Search  </Text>
-                   </TouchableOpacity>
-          </View>
-          <ChartComponent style={{height:300, width: 300}}/>
+          <View style={{height: 50}} />
+          <AutocompleteComponent />
         </View>
     );
   }
