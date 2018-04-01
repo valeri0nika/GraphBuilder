@@ -14,17 +14,6 @@ class ChartComponent extends Component {
      super();
 
      this.state = {
-       legend: {
-         enabled: true,
-         textSize: 14,
-         form: 'SQUARE',
-         formSize: 14,
-         xEntrySpace: 10,
-         yEntrySpace: 5,
-         formToTextSpace: 5,
-         wordWrapEnabled: true,
-         maxSizePercent: 0.5
-       },
        data: {
          dataSets: [{
            values: [{y: 100}, {y: 105}, {y: 102}, {y: 110}, {y: 114}, {y: 109}, {y: 105}, {y: 99}, {y: 95}],
@@ -37,12 +26,6 @@ class ChartComponent extends Component {
              highlightColor: processColor('red'),
            }
          }],
-       },
-       highlights: [{x: 3}, {x: 6}],
-       xAxis: {
-         valueFormatter: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
-         granularityEnabled: true,
-         granularity : 1,
        }
      };
    }
@@ -60,22 +43,36 @@ class ChartComponent extends Component {
 
 
    render() {
+     const dataForShwoing = {
+       data: {
+         dataSets: [{
+           values: this.props.data,
+           label: 'Bar dataSet'
+         }],
+       },
+       xAxis: {
+        valueFormatter: this.props.countries,
+        granularityEnabled: true,
+        granularity : 1,
+      }
+     };
+
      return (
        <View style={{flex: 1}}>
 
          <View style={styles.container}>
            <BarChart
              style={styles.chart}
-             data={this.state.data}
-             xAxis={this.state.xAxis}
+             data={dataForShwoing.data}
              animation={{durationX: 2000}}
              legend={this.state.legend}
              gridBackgroundColor={processColor('#ffffff')}
              drawBarShadow={false}
              drawValueAboveBar={true}
              drawHighlightArrow={true}
-             onSelect={this.handleSelect.bind(this)}
-             highlights={this.state.highlights}
+             xAxis={dataForShwoing.xAxis}
+             // onSelect={this.handleSelect.bind(this)}
+             // highlights={this.state.highlights}
              onChange={(event) => console.log(event.nativeEvent)}
            />
          </View>

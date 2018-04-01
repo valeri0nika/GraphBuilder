@@ -39,6 +39,7 @@ class UkraineAndOtherScreen extends Component {
           .reduce(reduceFunction, {})
 
         console.log(dictValue);
+        this.props.navigation.navigate('ChartScreen', dictValue)
       }.bind(this));
   }
 
