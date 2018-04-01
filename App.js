@@ -13,19 +13,13 @@ import {
 
 import AutocompleteComponent from './src/components/AutocompleteComponent';
 import ChartComponent from './src/components/ChartComponent';
+import RootStack from './src/route/Route';
 
 export default class App extends Component<Props> {
   searchData(){}
   render() {
     return (
-        <View style={{flex: 1}}>
-          <View style={{height: 50}} />
-          <AutocompleteComponent
-            callback={text => {
-              console.log('Callback: ', text);
-            }}
-           />
-        </View>
+        <RootStack />
     );
   }
 }
