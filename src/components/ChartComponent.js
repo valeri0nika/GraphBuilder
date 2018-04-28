@@ -47,7 +47,12 @@ class ChartComponent extends Component {
        data: {
          dataSets: [{
            values: this.props.data,
-           label: 'Bar dataSet'
+           label: 'Bar dataSet',
+           config: {
+           color: processColor('#d0d0e2'),
+           barSpacePercent: 40,
+           barShadowColor: processColor('lightgrey'),
+         }
          }],
        },
        xAxis: {
@@ -84,12 +89,13 @@ class ChartComponent extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#ffffff',
     height: 100,
     padding: 20,
   },
   chart: {
-    flex: 1
+    flex: 1,
+    backgroundColor: '#ffffff',
   }
 });
 
