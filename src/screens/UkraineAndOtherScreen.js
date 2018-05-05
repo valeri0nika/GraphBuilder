@@ -30,10 +30,6 @@ class UkraineAndOtherScreen extends Component {
         return response.json();
       })
       .then(function(myJsonArr) {
-        // prepare data for visualization
-        console.log("data response");
-        console.log(myJsonArr);
-
         const reduceFunction = (accumulator, currentValue) => {
           const intValue = parseInt(currentValue.contract_volume);
           if (accumulator[currentValue.country_to]) {
@@ -48,7 +44,6 @@ class UkraineAndOtherScreen extends Component {
           // TODO: need to tranform to common currency
           .reduce(reduceFunction, {})
 
-        console.log(dictValue);
         this.props.navigation.navigate('ChartScreen', dictValue)
       }.bind(this));
   }
