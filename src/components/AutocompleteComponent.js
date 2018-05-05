@@ -19,12 +19,8 @@ class AutocompleteComponent extends Component {
   Request autocomplete options
    */
   queryTextHasBeenChanged(text) {
-    console.log(text);
-    console.log('http://0.0.0.0:5005/rest/auto/' + text);
-    fetch('http://0.0.0.0:5005/rest/auto/' + text)
+    fetch('http://ec2-18-184-132-140.eu-central-1.compute.amazonaws.com:3000/rest/auto/' + text)
       .then(function(response) {
-        console.log("Autocomple Response:");
-        console.log(response);
         return response.json();
       })
       .then(function(myJson) {

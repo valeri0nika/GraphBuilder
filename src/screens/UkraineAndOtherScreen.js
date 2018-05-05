@@ -17,14 +17,8 @@ class UkraineAndOtherScreen extends Component {
   };
 
   requestDataForChart(obj) {
-    // start show loader
-    // TODO: start scrolling
-
-    const chartUrl = 'http://localhost:3000/rest/graph3/data?gnum=202&year=2014&cmdcode='
-    // const chartUrl = 'http://dyplomachart-env.guqvteptpb.eu-central-1.elasticbeanstalk.com/rest/graph3/data?gnum=202&year=2014&cmdcode=73'
-    console.log(chartUrl + obj.code);
+    const chartUrl = 'http://dyplomachart-env.guqvteptpb.eu-central-1.elasticbeanstalk.com/rest/graph3/data?gnum=202&year=2014&cmdcode='
     fetch(chartUrl + obj.code)
-    // fetch(chartUrl)
       .then(function(response) {
         // parse data to json format
         return response.json();
@@ -41,7 +35,6 @@ class UkraineAndOtherScreen extends Component {
         };
 
         const dictValue = myJsonArr.data.filter(item => item.country_from === 'Україна')
-          // TODO: need to tranform to common currency
           .reduce(reduceFunction, {})
 
         this.props.navigation.navigate('ChartScreen', dictValue)
