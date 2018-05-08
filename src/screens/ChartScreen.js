@@ -6,7 +6,7 @@ import ChartComponent from '../components/ChartComponent'
 
 class ChartScreen extends Component {
   static navigationOptions = {
-    title: 'Chart Screen',
+    title: 'Графік',
     headerTitleStyle: {
       fontWeight: 'bold',
     },

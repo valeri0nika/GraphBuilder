@@ -7,7 +7,7 @@ import AutocompleteComponent from '../components/AutocompleteComponent'
 
 class UkraineAndOtherScreen extends Component {
   static navigationOptions = {
-    title: 'Product Selection',
+    title: 'Вибір продукту',
     headerTitleStyle: {
       fontWeight: 'bold',
     },
@@ -50,7 +50,7 @@ class UkraineAndOtherScreen extends Component {
           marginLeft: 20,
           marginBottom: 20,
           marginTop: 20
-        }}> Please, select product</Text>
+        }}> Будь ласка, виберіть продукт</Text>
         <AutocompleteComponent
             callback={obj => { this.requestDataForChart(obj) }}
         />
