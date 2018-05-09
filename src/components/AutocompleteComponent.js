@@ -72,7 +72,7 @@ class AutocompleteComponent extends Component {
                 <TouchableOpacity
                   onPress={this.onClearPress}
                   style={styles.clearButtonStyle}>
-                    <Text style={{color: 'gray'}}>
+                    <Text style={{color: 'gray', fontWeight: 'bold'}}>
                       Очистити
                     </Text>
                  </TouchableOpacity>
