@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  View, Text, TouchableOpacity, StyleSheet, TextInput
+  View, Text, TouchableOpacity, StyleSheet, TextInput, Alert
 } from 'react-native';
 import Autocomplete from 'react-native-autocomplete-input';
 import AutocompleteComponent from '../components/AutocompleteComponent'
@@ -37,13 +37,22 @@ class UkraineAndOtherScreen extends Component {
         const dictValue = myJsonArr.data.filter(item => item.country_from === 'Україна')
           .reduce(reduceFunction, {})
 
-        console.log(dictValue);
-        this.props.navigation.navigate('ChartScreen', dictValue)
+        // is empty
+        if (Object.keys(dictValue).length === 0) {
+          this.noDataAlert()
+        } else {
+          this.props.navigation.navigate('ChartScreen', dictValue)
+        }
+
       }.bind(this));
   }
 
-  dataIsMissedMEssage() {
-    
+  noDataAlert() {
+    Alert.alert(
+      'Дані для даного продукту відсутні', '',
+      [ {text: 'Ок', onPress: () => console.log('OK Pressed')} ],
+      { cancelable: false }
+    );
   }
 
   render() {

@@ -13,6 +13,7 @@ class AutocompleteComponent extends Component {
       selectedItem: '',
       inputValue: '',
     };
+    this.onClearPress = this.onClearPress.bind(this);
   }
 
   /**
@@ -28,8 +29,16 @@ class AutocompleteComponent extends Component {
       }.bind(this));
   }
 
+  onClearPress() {
+    this.setState({
+      inputValue: '',
+      data: []
+    });
+  }
+
   render() {
     return (
+      <View>
       <Autocomplete
           inputContainerStyle={{paddingLeft: 4, paddingRight: 4, marginLeft: 20, marginRight: 20}}
           style={{height: 40, width: 300}}
@@ -49,19 +58,40 @@ class AutocompleteComponent extends Component {
           }
           data={this.state.data}
           renderTextInput={_ => (
-              <View style={{backgroundColor: '#ffffff'}}>
-              <TextInput
-                style={{height: 50, marginLeft: 40 }}
-                value={this.state.inputValue}
-                onChangeText={text => {
-                  this.setState({inputValue: text});
-                  this.queryTextHasBeenChanged(text);
-                }}
-              />
+              <View style={{backgroundColor: '#ffffff', flexDirection: 'row'}}>
+                <TextInput
+                  style={{height: 50, marginLeft: 40, flex: 1 }}
+                  value={this.state.inputValue}
+                  onChangeText={text => {
+                    this.setState({inputValue: text});
+                    this.queryTextHasBeenChanged(text);
+                  }}
+                />
+
+                { this.state.inputValue !== "" ?
+                <TouchableOpacity
+                  onPress={this.onClearPress}
+                  style={styles.clearButtonStyle}>
+                    <Text style={{color: 'gray', fontWeight: 'bold'}}>
+                      Очистити
+                    </Text>
+                 </TouchableOpacity>
+                 : <View />}
             </View>)
           }
-       />);
+       />
+       </View>
+     );
   }
 }
+
+const styles = StyleSheet.create({
+  clearButtonStyle: {
+    height: 50,
+    width: 100,
+    marginLeft: 50,
+    justifyContent: 'center'
+  }
+});
 
 export default AutocompleteComponent;
