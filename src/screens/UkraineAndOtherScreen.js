@@ -37,8 +37,13 @@ class UkraineAndOtherScreen extends Component {
         const dictValue = myJsonArr.data.filter(item => item.country_from === 'Україна')
           .reduce(reduceFunction, {})
 
+        console.log(dictValue);
         this.props.navigation.navigate('ChartScreen', dictValue)
       }.bind(this));
+  }
+
+  dataIsMissedMEssage() {
+    
   }
 
   render() {
